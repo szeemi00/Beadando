@@ -14,7 +14,7 @@ def mailCim (mail):
     for j in domain[0]:
         if j.isupper()==True or j=="_" or j=="," or j=="?" or j=="!" or j=="*" or j==":" or j==";":
             return print("Nem valid")
-    ls=["com","hu",]
+    ls=["com","hu"]
     for l in ls:
         if domain[1]==l:
            return print("Valid")
