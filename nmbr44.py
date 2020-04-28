@@ -44,6 +44,6 @@ def szoras(n):
         eredmeny_neg.append(atl_elteres_neg)
     for k in range(len(eredmeny_poz)):
         print("Pozitív szórás:",eredmeny_poz[k]+","+" negatív szórás:",eredmeny_neg[k])
-
+ 
 n=int(input("n= "))
 szoras(n)
