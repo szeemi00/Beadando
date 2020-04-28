@@ -1,5 +1,7 @@
 import math
 def szoras(n):
+    eredmeny_poz=[]
+    eredmeny_neg=[]
     for i in range (0,n):
         szam = ""
         poz_o = 0
@@ -10,7 +12,6 @@ def szoras(n):
         negativ = []
         szam=input()
         ls=szam.split(" ")
-        print (ls)
         for j in (ls):
             j=int(j)
             if j<0:
@@ -19,22 +20,30 @@ def szoras(n):
             else:
                 poz_o+=j
                 pozitiv.append(j)
-        if len(pozitiv) > 0:
+        if len(pozitiv) > 1:
             poz_atl=poz_o/len(pozitiv)
             for p in pozitiv:
                 tmp=(p-poz_atl)**2
                 atl_elteres_poz+=tmp
-            atl_elteres_poz=atl_elteres_poz/n
+            atl_elteres_poz=atl_elteres_poz/len(pozitiv)
+            atl_elteres_poz = math.sqrt(atl_elteres_poz)
+            atl_elteres_poz=f"{atl_elteres_poz:0.3}"
         else:
-            print("pozitív szórás nem számítható")
-        if len(negativ)>0:
+            atl_elteres_poz="nem számolható"
+        if len(negativ)>1:
             neg_atl=neg_o/len(negativ)
             for s in negativ:
                 tmp2=(s-neg_atl)**2
                 atl_elteres_neg+=tmp2
-            atl_elteres_neg=atl_elteres_neg/n
+            atl_elteres_neg=atl_elteres_neg/len(negativ)
+            atl_elteres_neg=math.sqrt(atl_elteres_neg)
+            atl_elteres_neg = f"{atl_elteres_neg:0.3}"
         else:
-            print("negatív szórás nem számítható")
-        print ("Pozitív szórás:",math.sqrt(atl_elteres_poz),"Negatív szórás:",math.sqrt(atl_elteres_neg))
-n=int(input("Kérek egy számot: "))
+            atl_elteres_neg="nem számolható."
+        eredmeny_poz.append(atl_elteres_poz)
+        eredmeny_neg.append(atl_elteres_neg)
+    for k in range(len(eredmeny_poz)):
+        print("Pozitív szórás:",eredmeny_poz[k]+","+" negatív szórás:",eredmeny_neg[k])
+
+n=int(input("n= "))
 szoras(n)

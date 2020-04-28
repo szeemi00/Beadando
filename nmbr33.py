@@ -1,24 +1,24 @@
 def mailCim (mail):
-    kukac=0
-    for c in mail:
-        if c=="@":
-            kukac+=1
-    if kukac==1:
-        mail = mail.split("@")
-    else:
-        return print("Nem valid")
+    if "@" not in mail:
+        return "Nem valid"
+    mail = mail.split("@")
     for i in mail[0]:
         if i=="_" or i=="," or i=="?" or i=="!" or i=="*" or i==":" or i==";":
-            return print ("Nem valid")
+            return "Nem valid"
     domain = mail[1].split(".")
+    db=0
     for j in domain[0]:
-        if j.isupper()==True or j=="_" or j=="," or j=="?" or j=="!" or j=="*" or j==":" or j==";":
-            return print("Nem valid")
+        if db==0:
+            if j.isupper()==True:
+                return "Nem valid"
+            db+=1
+        if j=="_" or j=="," or j=="?" or j=="!" or j=="*" or j==":" or j==";":
+            return "Nem valid"
     ls=["com","hu"]
     for l in ls:
-        if domain[1]==l:
-           return print("Valid")
-    return print("Nem valid")
+        if domain[len(domain)-1]==l:
+           return "Valid"
+    return "Nem valid"
 
 mail=input("Adja meg az e-mail címet és megállapítom, hogy valid-e: ")
-mailCim(mail)
+print(mailCim(mail))
